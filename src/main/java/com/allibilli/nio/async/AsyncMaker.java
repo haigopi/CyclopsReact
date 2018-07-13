@@ -30,7 +30,7 @@ public class AsyncMaker extends BaseCommunicator {
 
     public ListenableFuture<ResponseEntity<Object>> call(Tuple3<String, String, HttpMethod> tuple) {
 
-        log.info("Posting ASync Request to: {} - {} - {}", tuple.v1(), tuple.v3(), tuple.v2());
+        log.info("{}: ASync Request: {} - {}", tuple.v3(), tuple.v1(),  tuple.v2());
 
         ListenableFuture<ResponseEntity<Object>> entity = null;
         try {

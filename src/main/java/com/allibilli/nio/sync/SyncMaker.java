@@ -41,6 +41,8 @@ public class SyncMaker extends BaseCommunicator {
 
     public Boolean handleSyncResponse(ResponseEntity<Object> response) {
 
+        log.info("Async Response Received: {}", response.getStatusCode());
+
         if (Objects.isNull(response)) {
             log.error("Null Response");
             return Boolean.FALSE;
@@ -50,7 +52,7 @@ public class SyncMaker extends BaseCommunicator {
             log.error("Null Response Body");
             return Boolean.FALSE;
         }
-        log.info("Sync Response Processed", responseBody);
+        //log.info("Sync Response Processed", responseBody);
 
         return Boolean.TRUE;
     }

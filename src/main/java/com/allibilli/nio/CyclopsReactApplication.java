@@ -40,7 +40,7 @@ public class CyclopsReactApplication {
         Tuple3<String, String, HttpMethod> postTuple;
         Tuple3<String, String, HttpMethod> getTuple;
 
-        for (int i = 0; i <= 1; ++i) {
+        for (int i = 0; i <= 10; ++i) {
 
             postTuple = new Tuple3("https://reqres.in/api/users", payload, HttpMethod.POST);
             post.add(postTuple);
