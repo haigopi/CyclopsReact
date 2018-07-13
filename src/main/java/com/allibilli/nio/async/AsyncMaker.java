@@ -3,6 +3,7 @@ package com.allibilli.nio.async;
 import com.allibilli.nio.BaseCommunicator;
 import com.allibilli.nio.ExternalRestConfiguration;
 import lombok.extern.slf4j.Slf4j;
+import org.jooq.lambda.tuple.Tuple3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -27,13 +28,15 @@ public class AsyncMaker extends BaseCommunicator {
         return Boolean.TRUE;
     }
 
-    public ListenableFuture<ResponseEntity<Object>> post(String lenderId) {
+    public ListenableFuture<ResponseEntity<Object>> post(Tuple3<String, String, HttpMethod> tuple) {
+
+        log.info("Posting Sync Request to: {} - {} - {}", tuple.v1(), tuple.v3(), tuple.v2());
 
         ListenableFuture<ResponseEntity<Object>> entity = null;
         try {
 
             entity = externalRestConfiguration.getAsyncRestTemplate().
-                    exchange(externalRestConfiguration.getEndpoint(), HttpMethod.POST, getRequest(""), Object.class);
+                    exchange(tuple.v1(), tuple.v3(), getRequest(tuple.v2()), Object.class);
 
         } catch (Exception e) {
             e.printStackTrace();

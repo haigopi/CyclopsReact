@@ -3,6 +3,7 @@ package com.allibilli.nio.sync;
 import com.allibilli.nio.BaseCommunicator;
 import com.allibilli.nio.ExternalRestConfiguration;
 import lombok.extern.slf4j.Slf4j;
+import org.jooq.lambda.tuple.Tuple3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +22,14 @@ public class SyncMaker extends BaseCommunicator {
     @Autowired
     ExternalRestConfiguration externalRestConfiguration;
 
-    public ResponseEntity<Object> post(String payload) {
+    public ResponseEntity<Object> post(Tuple3<String, String, HttpMethod> tuple) {
+
+        log.info("Posting Sync Request to: {} - {} - {}", tuple.v1(), tuple.v3(), tuple.v2());
 
         ResponseEntity<Object> entity;
         try {
             entity = getSyncClient().
-                    exchange(externalRestConfiguration.getEndpoint(), HttpMethod.POST, getRequest(""), Object.class);
+                    exchange(tuple.v1(), tuple.v3(), getRequest(tuple.v2()), Object.class);
             return entity;
         } catch (Exception e) {
             log.error("Error ", e);
@@ -38,6 +41,7 @@ public class SyncMaker extends BaseCommunicator {
 
     public Boolean handleSyncResponse(ResponseEntity<Object> response) {
 
+        log.info("Response: {}", response);
 
         if (Objects.isNull(response)) {
             log.error("Null Response");
