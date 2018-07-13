@@ -28,12 +28,6 @@ public class BaseCommunicator {
     @Autowired
     ExternalRestConfiguration externalRestConfiguration;
 
-    @PostConstruct
-    public void init() {
-        log.info("...");
-        configureClients();
-    }
-
     private ClientHttpRequestFactory getClientHttpRequestFactory() {
         SimpleClientHttpRequestFactory clientHttpRequestFactory = new SimpleClientHttpRequestFactory();
 
@@ -50,11 +44,6 @@ public class BaseCommunicator {
     public RestTemplate getSyncClient() {
         return new RestTemplate(getClientHttpRequestFactory());
 
-    }
-
-    public void configureClients() {
-        externalRestConfiguration.setRestTemplate(getSyncClient());
-        externalRestConfiguration.setAsyncRestTemplate(getAsyncClient());
     }
 
     public AsyncRestTemplate getAsyncClient() {

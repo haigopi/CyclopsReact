@@ -17,10 +17,8 @@ import org.springframework.web.client.RestTemplate;
 public class ExternalRestConfiguration {
 
     //private String name;
-    private int timeout = 1000;
+    private int timeout = 10000;
     private boolean proxyEnabled = false;
     private String proxyHost = "localhost";
     private int proxyPort = 8080;
-    private RestTemplate restTemplate;
-    private AsyncRestTemplate asyncRestTemplate;
 }

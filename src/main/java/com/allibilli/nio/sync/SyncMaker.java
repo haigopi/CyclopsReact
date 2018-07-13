@@ -22,9 +22,9 @@ public class SyncMaker extends BaseCommunicator {
     @Autowired
     ExternalRestConfiguration externalRestConfiguration;
 
-    public ResponseEntity<Object> post(Tuple3<String, String, HttpMethod> tuple) {
+    public ResponseEntity<Object> call(Tuple3<String, String, HttpMethod> tuple) {
 
-        log.info("Posting Sync Request to: {} - {} - {}", tuple.v1(), tuple.v3(), tuple.v2());
+        log.info("{}: Sync Request: {} - {}", tuple.v3(), tuple.v1(),  tuple.v2());
 
         ResponseEntity<Object> entity;
         try {
@@ -41,8 +41,6 @@ public class SyncMaker extends BaseCommunicator {
 
     public Boolean handleSyncResponse(ResponseEntity<Object> response) {
 
-        log.info("Response: {}", response);
-
         if (Objects.isNull(response)) {
             log.error("Null Response");
             return Boolean.FALSE;
@@ -52,7 +50,7 @@ public class SyncMaker extends BaseCommunicator {
             log.error("Null Response Body");
             return Boolean.FALSE;
         }
-        log.info("Response Processed", responseBody);
+        log.info("Sync Response Processed", responseBody);
 
         return Boolean.TRUE;
     }
