@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
@@ -77,8 +78,9 @@ public class BaseCommunicator {
 
     public HttpEntity<String> getRequest(String payload) {
         HttpHeaders requestHeaders = new HttpHeaders();
-        requestHeaders.add(HttpHeaders.CONTENT_TYPE, "application/json");
-        requestHeaders.add(HttpHeaders.ACCEPT, "application/json");
+        requestHeaders.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON.toString());
+        requestHeaders.add(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON.toString());
+        requestHeaders.add(HttpHeaders.USER_AGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
         HttpEntity<String> request = new HttpEntity<>(payload, requestHeaders);
         return request;
     }
