@@ -41,7 +41,7 @@ public class SyncMaker extends BaseCommunicator {
 
     public Boolean handleSyncResponse(ResponseEntity<Object> response) {
 
-        log.info("Async Response Received: {}", response.getStatusCode());
+        log.info("Sync Response Received: {}", response.getStatusCode());
 
         if (Objects.isNull(response)) {
             log.error("Null Response");
