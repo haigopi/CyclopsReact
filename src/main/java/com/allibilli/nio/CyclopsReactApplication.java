@@ -30,6 +30,12 @@ public class CyclopsReactApplication {
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(CyclopsReactApplication.class, args);
         CyclopsReactApplication local = configurableApplicationContext.getBean(CyclopsReactApplication.class);
 
+        // If Test needed directly from the application.
+        // local.init(local);
+
+    }
+
+    public void init(CyclopsReactApplication local) {
         String payload = "{\"name\": \"Gopi\",\"job\": \"Engineer\"}";
 
         //POST
@@ -60,10 +66,6 @@ public class CyclopsReactApplication {
         log.info("SYNC POST/GET: ");
         local.initiateOutboundSyncReactor(post);
         local.initiateOutboundSyncReactor(get);
-
-
-
-
     }
 
     public void initiateOutboundSyncReactor(ConcurrentLinkedQueue<Tuple3<String, String, HttpMethod>> q) {
@@ -83,6 +85,4 @@ public class CyclopsReactApplication {
                 onFail(e -> asyncMaker.handleError(e, e.getValue()));
 
     }
-
-
 }
