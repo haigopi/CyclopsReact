@@ -32,43 +32,43 @@
         </encoder>
     </appender>
     <logger name="com.allibilli" level="INFO" />
-    <logger name="org.apache.commons" level="ERROR" />
-    <logger name="org.apache.http" level="ERROR" />
-    <logger name="org.apache.commons.digester.Digester" level="ERROR" />
-    <logger name="org.apache.commons.digester.Digester.sax" level="ERROR" />
-    <logger name="org.apache.velocity" level="ERROR" />
-    <logger name="org.apache.http" level="ERROR" />
-    <logger name="org.quartz" level="ERROR" />
-    <logger name="org.springframework.jdbc.core.StatementCreatorUtils" level="ERROR" />
+    <logger name="org.apache.commons" level="INFO" />
+    <logger name="org.apache.http" level="INFO" />
+    <logger name="org.apache.commons.digester.Digester" level="INFO" />
+    <logger name="org.apache.commons.digester.Digester.sax" level="INFO" />
+    <logger name="org.apache.velocity" level="INFO" />
+    <logger name="org.apache.http" level="INFO" />
+    <logger name="org.quartz" level="INFO" />
+    <logger name="org.springframework.jdbc.core.StatementCreatorUtils" level="INFO" />
 
-    <logger name="org.springframework" level="ERROR"/>
-    <logger name="org.springframework.data" level="ERROR"/>
-    <logger name="org.springframework.web" level="ERROR"/>
-    <logger name="org.springframework.web.client" level="ERROR"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.springframework.data" level="INFO"/>
+    <logger name="org.springframework.web" level="INFO"/>
+    <logger name="org.springframework.web.client" level="INFO"/>
 
-    <logger name="org.springframework.boot" level="ERROR"/>
-    <logger name="org.springframework.social" level="ERROR"/>
-    <logger name="org.springframework.security" level="ERROR"/>
+    <logger name="org.springframework.boot" level="INFO"/>
+    <logger name="org.springframework.social" level="INFO"/>
+    <logger name="org.springframework.security" level="INFO"/>
 
-    <logger name="org.springframework.jdbc.core" level="ERROR" />
-    <logger name="com.jayway.restassured" level="ERROR" />
-    <logger name="org.springframework.jdbc.core.JdbcTemplate" level="ERROR" />
-    <logger name="org.springframework.scheduling.quartz" level="ERROR" />
-    <logger name="org.hibernate" level="ERROR" />
-    <logger name="org.springframework.jndi" level="ERROR" />
-    <logger name="org.thymeleaf" level="ERROR" />
-    <logger name="io.swagger" level="ERROR" />
+    <logger name="org.springframework.jdbc.core" level="INFO" />
+    <logger name="com.jayway.restassured" level="INFO" />
+    <logger name="org.springframework.jdbc.core.JdbcTemplate" level="INFO" />
+    <logger name="org.springframework.scheduling.quartz" level="INFO" />
+    <logger name="org.hibernate" level="INFO" />
+    <logger name="org.springframework.jndi" level="INFO" />
+    <logger name="org.thymeleaf" level="INFO" />
+    <logger name="io.swagger" level="INFO" />
 
-    <logger name="org.springframework.boot.autoconfigure" level="ERROR" />
-    <logger name="org.springframework.jersey" level="ERROR" />
-    <logger name="org.glassfish.jersey" level="ERROR" />
-    <logger name="javax.ws" level="ERROR" />
-    <logger name="org.apache.catalina" level="ERROR" />
+    <logger name="org.springframework.boot.autoconfigure" level="INFO" />
+    <logger name="org.springframework.jersey" level="INFO" />
+    <logger name="org.glassfish.jersey" level="INFO" />
+    <logger name="javax.ws" level="INFO" />
+    <logger name="org.apache.catalina" level="INFO" />
     <logger name="org.apache.camel" level="INFO" />
-    <logger name="com.example" level="debug" />
-    <logger name="org.mongodb" level="ERROR" />
+    <logger name="com.allibilli" level="debug" />
+    <logger name="org.mongodb" level="INFO" />
 
-    <root level="ERROR">
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </root>

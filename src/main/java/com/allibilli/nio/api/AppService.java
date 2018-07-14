@@ -37,10 +37,12 @@ public class AppService {
         post = new ConcurrentLinkedQueue();
         get = new ConcurrentLinkedQueue();
 
-        for (int i = 0; i <= 10; ++i) {
+    }
 
-            Tuple3<String, String, HttpMethod> postTuple = new Tuple3("https://reqres.in/api/users", payload, org.springframework.http.HttpMethod.POST);
-            post.add(postTuple);
+
+    public void createGetQ(){
+
+        for (int i = 0; i <= 10; ++i) {
 
             Tuple3<String, String, HttpMethod> getTuple = new Tuple3("https://reqres.in/api/users/2?delay=3", payload, HttpMethod.GET);
             get.add(getTuple);
@@ -48,14 +50,26 @@ public class AppService {
         }
     }
 
+    public void createPostQ(){
+
+        for (int i = 0; i <= 10; ++i) {
+
+            Tuple3<String, String, HttpMethod> postTuple = new Tuple3("https://reqres.in/api/users", payload, org.springframework.http.HttpMethod.POST);
+            post.add(postTuple);
+
+        }
+    }
+
 
     public void initiatePost() {
+        createPostQ();
         log.info("ASYNC + SYNC POST: ");
         initiateOutboundAsyncReactor(post);
         initiateOutboundSyncReactor(post);
     }
 
     public void initiateGet() {
+        createGetQ();
         log.info("ASYNC + SYNC GET: ");
         initiateOutboundAsyncReactor(get);
         initiateOutboundSyncReactor(get);
