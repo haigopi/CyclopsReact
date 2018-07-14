@@ -1,7 +1,7 @@
 Feature: A simple payload that can kick off the camel routes
 
   Background:
-    * url baseURL+'/tenant'
+    * url baseURL+'/test'
     * configure headers = read('classpath:headers.js')
     * def payload = read('payload.json')
 
@@ -10,29 +10,25 @@ Feature: A simple payload that can kick off the camel routes
     And request payload
     When method post
     Then status 200
-    And match response contains { id : '#notnull' }
+
+    And request payload
+    When method get
+    Then status 200
 
     And request payload
     When method post
     Then status 200
-    And match response contains { id : '#notnull' }
+
+    And request payload
+    When method get
+    Then status 200
 
     And request payload
     When method post
     Then status 200
-    And match response contains { id : '#notnull' }
 
     And request payload
-    When method post
+    When method get
     Then status 200
-    And match response contains { id : '#notnull' }
 
-    And request payload
-    When method post
-    Then status 200
-    And match response contains { id : '#notnull' }
 
-    And request payload
-    When method post
-    Then status 200
-    And match response contains { id : '#notnull' }

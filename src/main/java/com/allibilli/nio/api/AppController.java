@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@Path("tenant")
+@Path("test")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Slf4j

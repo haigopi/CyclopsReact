@@ -7,7 +7,7 @@ function() {
   var config = {
     env: env,
 	myVarName: 'someValue',
-    baseURL: 'http://localhost:8080/kiraya'
+    baseURL: 'http://localhost:8080/nio'
 
   }
   if (env == 'dev') {
