@@ -30,12 +30,14 @@ public class AppService {
     @Autowired
     AsyncMaker asyncMaker;
 
+    SimpleReact simpleReact;
 
     @PostConstruct
     public void init() {
         payload = "{\"name\": \"Gopi\",\"job\": \"Engineer\"}";
         post = new ConcurrentLinkedQueue();
         get = new ConcurrentLinkedQueue();
+        simpleReact = new SimpleReact();
 
     }
 
@@ -77,7 +79,7 @@ public class AppService {
 
     public void initiateOutboundSyncReactor(ConcurrentLinkedQueue<Tuple3<String, String, HttpMethod>> q) {
 
-        new SimpleReact().
+        simpleReact.
                 from(q.stream().map(it -> syncMaker.call(q.poll()))).
                 then(resp -> syncMaker.handleSyncResponse(resp)).
                 onFail(e -> syncMaker.handleError(e, e.getValue()));
@@ -86,7 +88,7 @@ public class AppService {
 
     public void initiateOutboundAsyncReactor(ConcurrentLinkedQueue<Tuple3<String, String, HttpMethod>> q) {
 
-        new SimpleReact().
+        simpleReact.
                 fromStream(q.stream().map(it -> FutureConverter.toCompletableFuture(asyncMaker.call(q.peek())))).
                 then(resp -> asyncMaker.handleAsyncResponse(resp)).
                 onFail(e -> asyncMaker.handleError(e, e.getValue()));
