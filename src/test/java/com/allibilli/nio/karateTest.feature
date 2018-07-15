@@ -1,4 +1,4 @@
-Feature: A simple payload that can kick off the camel routes
+Feature: A simple payload that can kick off the API
 
   Background:
     * url baseURL+'/test'
@@ -30,5 +30,3 @@ Feature: A simple payload that can kick off the camel routes
     And request payload
     When method get
     Then status 200
-
-
