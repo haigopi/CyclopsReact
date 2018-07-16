@@ -31,6 +31,8 @@ public class CyclopsReactApplication {
         CyclopsReactApplication local = configurableApplicationContext.getBean(CyclopsReactApplication.class);
 
         // If Test needed directly from the application.
+        // This uses the main thread.
+        // Kicking off an API call will result creating a new thread for every request.
         // local.init(local);
 
     }
